@@ -1,0 +1,1492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KTI Prime Health SWSHE Pitch</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            overflow-x: hidden;
+        }
+        
+        .slide {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 60px;
+            position: relative;
+            background: white;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+        
+        .slide:nth-child(odd) {
+            background: linear-gradient(135deg, #ffffff 0%, #f5f5f5 100%);
+        }
+        
+        .slide-number {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            background: #c41230;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            box-shadow: 0 4px 10px rgba(196,18,48,0.3);
+        }
+        
+        .property-badge {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(196, 18, 48, 0.9);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8em;
+            font-weight: 600;
+        }
+        
+        h1 {
+            color: #c41230;
+            font-size: 3.5em;
+            margin-bottom: 20px;
+            text-align: center;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        h2 {
+            color: #1a1a1a;
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            text-align: center;
+            font-weight: 700;
+        }
+        
+        h3 {
+            color: #c41230;
+            font-size: 1.8em;
+            margin: 20px 0;
+            font-weight: 600;
+        }
+        
+        .tagline {
+            color: #d4af37;
+            font-size: 1.6em;
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 30px;
+            font-style: italic;
+        }
+        
+        .content-box {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border-left: 5px solid #c41230;
+            margin: 20px 0;
+            max-width: 1200px;
+            width: 100%;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 25px;
+            margin: 40px 0;
+        }
+        
+        .stat-card {
+            background: linear-gradient(135deg, #c41230 0%, #8b0e24 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            transition: transform 0.3s ease;
+            box-shadow: 0 8px 20px rgba(196,18,48,0.3);
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .stat-number {
+            font-size: 2.5em;
+            font-weight: 800;
+            color: #d4af37;
+            display: block;
+            margin-bottom: 10px;
+        }
+        
+        .stat-label {
+            font-size: 1em;
+            opacity: 0.95;
+        }
+        
+        .chart-container {
+            width: 100%;
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 30px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .timeline {
+            position: relative;
+            padding: 40px 0;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 4px;
+            height: 100%;
+            background: #d4af37;
+        }
+        
+        .timeline-item {
+            padding: 20px 40px;
+            position: relative;
+            width: 50%;
+            animation: fadeInUp 0.8s ease;
+        }
+        
+        .timeline-item:nth-child(odd) {
+            left: 0;
+            text-align: right;
+        }
+        
+        .timeline-item:nth-child(even) {
+            left: 50%;
+        }
+        
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            top: 30px;
+            width: 20px;
+            height: 20px;
+            background: #c41230;
+            border-radius: 50%;
+            border: 4px solid #d4af37;
+        }
+        
+        .timeline-item:nth-child(odd)::after {
+            right: -10px;
+        }
+        
+        .timeline-item:nth-child(even)::after {
+            left: -10px;
+        }
+        
+        .cta-button {
+            background: linear-gradient(135deg, #c41230 0%, #8b0e24 100%);
+            color: white;
+            padding: 20px 50px;
+            font-size: 1.4em;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(196,18,48,0.3);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-top: 40px;
+        }
+        
+        .logo-section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 40px;
+            margin: 30px 0;
+        }
+        
+        .award-badge {
+            background: linear-gradient(135deg, #d4af37 0%, #f4e4a4 100%);
+            color: #1a1a1a;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-weight: 700;
+            box-shadow: 0 8px 20px rgba(212,175,55,0.3);
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .process-flow {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin: 40px 0;
+            flex-wrap: wrap;
+        }
+        
+        .process-step {
+            background: white;
+            border: 3px solid #c41230;
+            padding: 20px;
+            border-radius: 15px;
+            width: 180px;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .process-step::after {
+            content: '→';
+            position: absolute;
+            right: -30px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 2em;
+            color: #d4af37;
+        }
+        
+        .process-step:last-child::after {
+            display: none;
+        }
+        
+        .quote-box {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 15px;
+            margin: 30px 0;
+            position: relative;
+            font-style: italic;
+            font-size: 1.3em;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        .quote-box::before {
+            content: '"';
+            position: absolute;
+            top: -20px;
+            left: 30px;
+            font-size: 4em;
+            color: #d4af37;
+        }
+        
+        .proprietary-badge {
+            background: #c41230;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: 600;
+            display: inline-block;
+            margin-left: 10px;
+        }
+        
+        .kti-logo {
+            width: 150px;
+            height: auto;
+        }
+        
+        .dashboard-img {
+            width: 100%;
+            max-width: 900px;
+            margin: 20px auto;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        
+        .dashboard-img:hover {
+            transform: scale(1.02);
+        }
+        
+        .swshe-highlight {
+            background: linear-gradient(135deg, #2e7d32 0%, #1b5e20 100%);
+            color: white;
+            padding: 20px 30px;
+            border-radius: 15px;
+            margin: 30px 0;
+            text-align: center;
+            font-size: 1.2em;
+            box-shadow: 0 10px 30px rgba(46,125,50,0.3);
+        }
+        
+        .citation {
+            font-size: 0.8em;
+            color: #666;
+            vertical-align: super;
+        }
+        
+        .certification-levels {
+            background: #f5f5f5;
+            padding: 20px;
+            border-radius: 15px;
+            margin: 20px 0;
+        }
+        
+        .certification-levels h4 {
+            color: #c41230;
+            margin-bottom: 15px;
+        }
+        
+        .level-item {
+            display: flex;
+            align-items: center;
+            margin: 10px 0;
+            font-size: 1.1em;
+        }
+        
+        .level-indicator {
+            width: 120px;
+            font-weight: bold;
+            margin-right: 15px;
+        }
+        
+        .success { color: #2e7d32; }
+        .developing { color: #f57c00; }
+        .distressed { color: #f44336; }
+        .hazard { color: #b71c1c; }
+        
+        .intervention-box {
+            background: #e8f5e9;
+            padding: 20px;
+            border-radius: 15px;
+            margin: 20px 0;
+        }
+        
+        .deadline-banner {
+            background: linear-gradient(135deg, #c41230 0%, #8b0e24 100%);
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-size: 1.3em;
+            font-weight: bold;
+            border-radius: 10px;
+            margin: 20px 0;
+            animation: pulse 2s infinite;
+        }
+
+        .comparison-table {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin: 30px 0;
+        }
+
+        .comparison-column {
+            padding: 25px;
+            border-radius: 15px;
+        }
+
+        .current-state {
+            background: #ffebee;
+            border: 2px solid #c41230;
+        }
+
+        .with-kti {
+            background: #e8f5e9;
+            border: 2px solid #2e7d32;
+        }
+
+        .health-metric {
+            background: linear-gradient(135deg, #2196f3 0%, #1976d2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            margin: 15px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .urgency-box {
+            background: #fff3cd;
+            border-left: 5px solid #f57c00;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 10px;
+        }
+        
+        .billing-demo {
+            background: #f5f5f5;
+            padding: 30px;
+            border-radius: 15px;
+            margin: 30px 0;
+        }
+        
+        .problem-button {
+            padding: 20px;
+            border: 2px solid #c41230;
+            background: white;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 1.1em;
+            width: 100%;
+        }
+        
+        .problem-button:hover {
+            background: #ffebee;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(196,18,48,0.2);
+        }
+        
+        .billing-result {
+            margin-top: 20px;
+            padding: 20px;
+            background: #e8f5e9;
+            border-radius: 10px;
+            display: none;
+            animation: slideInUp 0.5s;
+        }
+        
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .billing-flow {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 30px 0;
+            padding: 20px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .flow-item {
+            text-align: center;
+            flex: 1;
+            position: relative;
+        }
+        
+        .flow-item::after {
+            content: '→';
+            position: absolute;
+            right: -15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #d4af37;
+            font-size: 1.5em;
+        }
+        
+        .flow-item:last-child::after {
+            display: none;
+        }
+        
+        .flow-icon {
+            font-size: 2em;
+            margin-bottom: 10px;
+            color: #c41230;
+        }
+        
+        .flow-label {
+            font-size: 0.9em;
+            color: #666;
+        }
+        
+        .revenue-counter {
+            background: linear-gradient(135deg, #d4af37 0%, #f4e4a4 100%);
+            color: #1a1a1a;
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            margin-top: 30px;
+            box-shadow: 0 10px 30px rgba(212,175,55,0.3);
+        }
+        
+        .badge-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 20px;
+            margin: 30px 0;
+            text-align: center;
+        }
+        
+        .badge-item {
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        
+        .badge-item:hover {
+            transform: scale(1.1);
+        }
+        
+        .badge-item img {
+            width: 80px;
+            height: 80px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .badge-label {
+            margin-top: 10px;
+            font-size: 0.9em;
+            color: #666;
+            font-weight: 600;
+        }
+        
+        .integration-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin: 30px 0;
+        }
+        
+        .integration-box {
+            background: #f9f9f9;
+            padding: 25px;
+            border-radius: 15px;
+            border-left: 4px solid #c41230;
+        }
+        
+        .integration-box h4 {
+            color: #c41230;
+            margin-bottom: 15px;
+        }
+        
+        .integration-box ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .integration-box li {
+            margin: 12px 0;
+            padding-left: 25px;
+            position: relative;
+        }
+        
+        .integration-box li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #2e7d32;
+            font-weight: bold;
+        }
+        
+        .risk-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 30px 0;
+        }
+        
+        .risk-table th,
+        .risk-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .risk-table th {
+            background: #f5f5f5;
+            color: #c41230;
+            font-weight: bold;
+        }
+        
+        .risk-table tr:hover {
+            background: #f9f9f9;
+        }
+        
+        .healthcare-ready {
+            background: #e3f2fd;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 20px;
+            text-align: center;
+            font-size: 1.1em;
+        }
+        
+        .sustainability-flow {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 40px 0;
+            background: linear-gradient(135deg, #f5f5f5 0%, #ffffff 100%);
+            padding: 30px;
+            border-radius: 15px;
+            border: 2px solid #d4af37;
+        }
+        
+        .sustainability-step {
+            flex: 1;
+            text-align: center;
+            position: relative;
+        }
+        
+        .sustainability-step::after {
+            content: '→';
+            position: absolute;
+            right: -20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #d4af37;
+            font-size: 2em;
+        }
+        
+        .sustainability-step:last-child::after {
+            display: none;
+        }
+        
+        .sustainability-icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+        }
+        
+        .impact-timeline {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin: 30px 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .timeline-phase {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 20px 0;
+            padding: 20px;
+            background: #f9f9f9;
+            border-radius: 10px;
+            border-left: 4px solid #c41230;
+        }
+    </style>
+</head>
+<body>
+    <!-- SLIDE 1: OPENING -->
+    <div class="slide">
+        <div class="slide-number">1</div>
+        <div class="property-badge">Property of KTI</div>
+        <div class="logo-section">
+            <img src="https://mcusercontent.com/a85d6cade6584c6b501b45583/images/e5a4753c-cb1c-583c-9bf0-af1785263808.png" alt="KTI Logo" class="kti-logo">
+            <div class="award-badge">Colorado Tech Association Emerging Leader APEX 2025</div>
+        </div>
+        <h2>Making Invisible Work Visible - and Billable</h2>
+        <div class="tagline">"We Turn Prevention into Medicaid Revenue"</div>
+        
+        <div class="content-box">
+            <p style="font-size: 1.2em; line-height: 1.8; margin-bottom: 20px;">
+                <strong>Housing instability put my brother and me in foster care.</strong> Years later, managing 3,200 residents, I watched people with permanent vouchers lose housing repeatedly.
+            </p>
+            
+            <div class="quote-box">
+                You track violations but not root causes. Track when hours get cut, bills pile up. That's where eviction starts.
+            </div>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <span class="stat-number">140+</span>
+                    <span class="stat-label">Health & Housing Indicators</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">88%</span>
+                    <span class="stat-label">Housing Stability Rate</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">35%</span>
+                    <span class="stat-label">Fewer ER Visits</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">325%</span>
+                    <span class="stat-label">ROI Documented</span>
+                </div>
+            </div>
+            
+            <p style="font-size: 1.1em; text-align: center; margin-top: 30px; color: #666;">
+                <em>Brittany Katalenas, CEO & Founder | Patent Application 46512-1 | <a href="https://konnectedtech.com" style="color: #c41230;">konnectedtech.com</a></em>
+            </p>
+        </div>
+    </div>
+
+    <!-- SLIDE 2: WHY NOW? -->
+    <div class="slide">
+        <div class="slide-number">2</div>
+        <div class="property-badge">Property of KTI</div>
+        <h2>Why Now? The Perfect Storm</h2>
+        <div class="tagline">"3 Forces Converging = Historic Opportunity"</div>
+        
+        <div class="content-box">
+            <div class="urgency-box">
+                <h3 style="color: #f57c00;">⏰ CRITICAL TIMELINE</h3>
+                <ul style="font-size: 1.2em; line-height: 1.8;">
+                    <li><strong>January 2026:</strong> CMS decision on SWSHE</li>
+                    <li><strong>March 2025:</strong> ARPA funds expire</li>
+                    <li><strong>Today:</strong> 12 months to prove prevention works</li>
+                </ul>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin: 30px 0;">
+                <div style="background: #ffebee; padding: 20px; border-radius: 15px; text-align: center;">
+                    <h4 style="color: #c41230;">1. CMS Seeking Models</h4>
+                    <p>Actively funding prevention-based care models that reduce costs</p>
+                </div>
+                <div style="background: #e3f2fd; padding: 20px; border-radius: 15px; text-align: center;">
+                    <h4 style="color: #1976d2;">2. SWSHE's $530M Test</h4>
+                    <p>Colorado's pilot could unlock nationwide Medicaid funding for PSH</p>
+                </div>
+                <div style="background: #e8f5e9; padding: 20px; border-radius: 15px; text-align: center;">
+                    <h4 style="color: #2e7d32;">3. Proven Technology</h4>
+                    <p>KTI already demonstrating 325% ROI across 3,200 households</p>
+                </div>
+            </div>
+
+            <div class="quote-box" style="font-style: normal;">
+                <p style="font-size: 1.3em; text-align: center;">
+                    <strong style="color: #d4af37;">If SWSHE fails:</strong> Colorado loses $530M in federal funding<br>
+                    869 people lose housing support<br>
+                    PSH model dies nationwide<br><br>
+                    <strong style="color: #d4af37;">If SWSHE succeeds:</strong> Colorado becomes the national model<br>
+                    Medicaid funds PSH everywhere
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIDE 3: RESIDENT VOICES REVEAL BILLABLE GAPS -->
+    <div class="slide">
+        <div class="slide-number">3</div>
+        <div class="property-badge">Property of KTI</div>
+        <h2>112 PSH Residents Show Us What's Billable</h2>
+        <div class="tagline">"Every Problem = Preventable Crisis = Medicaid Revenue"</div>
+        
+        <div class="content-box">
+            <div class="quote-box" style="font-size: 1.1em;">
+                "Rent increases yearly. Social security up 2.5%. 
+                Can't afford groceries. Nobody helps with paperwork."
+            </div>
+            
+            <h3 style="text-align: center;">This ONE Resident = 7 Billable Services:</h3>
+            <div style="background: #e8f5e9; padding: 20px; border-radius: 15px;">
+                <ul style="columns: 2; font-size: 1.1em;">
+                    <li>Benefits counseling (G0176) - $75</li>
+                    <li>Housing stabilization (T1017) - $120</li>
+                    <li>Nutrition counseling (Z59.4, 97802) - $85</li>
+                    <li>Safety planning (H0043) - $95</li>
+                    <li>Disability support (H0046) - $110</li>
+                    <li>Case management (90887) - $125</li>
+                    <li>Financial literacy (98960) - $90</li>
+                </ul>
+                <p style="text-align: center; font-size: 1.3em; margin-top: 15px;">
+                    <strong>Monthly value: $700 | Currently billing: $0</strong>
+                </p>
+            </div>
+            
+            <div class="chart-container">
+                <canvas id="preventableChart"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIDE 4: GENEVA VILLAGE PROOF -->
+    <div class="slide">
+        <div class="slide-number">4</div>
+        <div class="property-badge">Property of KTI</div>
+        <h2>Geneva Village: Prevention Works</h2>
+        <div class="tagline">"12 Women, 100% Stability, 325% ROI"</div>
+        
+        <div class="content-box">
+            <div class="quote-box">
+                Mary, 77: "Nobody knew my benefits lapsed." Our text evaluation detected it. Case manager restored benefits.
+                <br><br>
+                <strong style="color: #d4af37;">Cost: $300. Savings: $10,000 emergency placement.</strong>
+            </div>
+            
+            <div class="chart-container">
+                <canvas id="roiChart"></canvas>
+            </div>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <span class="stat-number">35%</span>
+                    <span class="stat-label">Fewer ER Visits</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">$127K</span>
+                    <span class="stat-label">Annual Medicaid Savings</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">325%</span>
+                    <span class="stat-label">ROI Documented</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">$3.27</span>
+                    <span class="stat-label">Saved Per $1 Spent</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIDE 5: HOW IT WORKS WITH INTERACTIVE DEMO -->
+    <div class="slide">
+        <div class="slide-number">5</div>
+        <div class="property-badge">Property of KTI</div>
+        <h2>LME System: Simple & Proven</h2>
+        <div class="tagline">Patent Application 46512-1 <span class="proprietary-badge">Proprietary</span></div>
+        
+        <div class="content-box">
+            <a href="https://mcusercontent.com/a85d6cade6584c6b501b45583/images/57372959-2fde-7e17-8866-e0ff97277051.png" target="_blank">
+                <img src="https://mcusercontent.com/a85d6cade6584c6b501b45583/images/57372959-2fde-7e17-8866-e0ff97277051.png" alt="SDOH Framework" class="dashboard-img">
+            </a>
+            
+            <div class="process-flow">
+                <div class="process-step">
+                    <h4>DETECT</h4>
+                    <p>140+ Indicators</p>
+                </div>
+                <div class="process-step">
+                    <h4>ANALYZE</h4>
+                    <p>KTI Analysis</p>
+                </div>
+                <div class="process-step">
+                    <h4>PREVENT</h4>
+                    <p>Before Crisis</p>
+                </div>
+                <div class="process-step">
+                    <h4>DOCUMENT</h4>
+                    <p>Every Service</p>
+                </div>
+                <div class="process-step">
+                    <h4>BILL</h4>
+                    <p>Medicaid Pays</p>
+                </div>
+            </div>
+            
+            <h3 style="text-align: center; margin: 30px 0;">140+ Indicators Across These Domains:</h3>
+            <div class="badge-grid">
+                <div class="badge-item">
+                    <a href="https://mcusercontent.com/a85d6cade6584c6b501b45583/images/032f56bd-9bf9-3dd8-cdf6-8d8d3e84a384.jpeg" target="_blank">
+                        <img src="https://mcusercontent.com/a85d6cade6584c6b501b45583/images/032f56bd-9bf9-3dd8-cdf6-8d8d3e84a384.jpeg" alt="Management">
+                    </a>
+                    <div class="badge-label">Management</div>
+                </div>
+                <div class="badge-item">
+                    <a href="https://mcusercontent.com/a85d6cade6584c6b501b45583/images/ed2fe16d-11cf-c857-1b74-2198f6b23175.png" target="_blank">
+                        <img src="https://mcusercontent.com/a85d6cade6584c6b501b45583/images/ed2fe16d-11cf-c857-1b74-2198f6b23175.png" alt="Maintenance">
+                    </a>
+                    <div class="badge-label">Maintenance</div>
+                </div>
+                <div class="badge-item">
+                    <a href="https://mcusercontent.com/a85d6cade6584c6b501b45583/images/3721be58-3845-e579-f5b5-167280f48da2.png" target="_blank">
+                        <img src="https://mcusercontent.com/a85d6cade6584c6b501b45583/images/3721be58-3845-e579-f5b5-167280f48da2.png" alt="Wellbeing">
+                    </a>
+                    <div class="badge-label">Wellbeing</div>
+                </div>
+                <div class="badge-item">
+                    <a href="https://mcusercontent.com/a85d6cade6584c6b501b45583/images/7611c8e1-f773-e8cf-500e-a2cf06b4897f.png" target="_blank">
+                        <img src="https://mcusercontent.com/a85d6cade6584c6b501b45583/images/7611c8e1-f773-e8cf-500e-a2cf06b4897f.png" alt="Neighborhood">
+                    </a>
+                    <div class="badge-label">Neighborhood</div>
+                </div>
+                <div class="badge-item">
+                    <img src="https://mcusercontent.com/a85d6cade6584c6b501b45583/images/e5a4753c-cb1c-583c-9bf0-af1785263808.png" width="80" alt="KTI">
+                    <div class="badge-label">Education</div>
+                </div>
+            </div>
+
+            <!-- Interactive Billing Demo -->
+            <div class="billing-demo">
+                <h3 style="text-align: center; color: #c41230;">Live Demo: Click Problems to See Billing Codes</h3>
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 20px;">
+                    <button class="problem-button" onclick="showBilling('housing')">
+                        "I worry about rent"
+                        <br><span style="color: #c41230; font-size: 2em;">⚠️</span>
+                    </button>
+                    <button class="problem-button" onclick="showBilling('benefits')">
+                        "My benefits expired"
+                        <br><span style="color: #c41230; font-size: 2em;">⚠️</span>
+                    </button>
+                    <button class="problem-button" onclick="showBilling('food')">
+                        "No food this week"
+                        <br><span style="color: #c41230; font-size: 2em;">⚠️</span>
+                    </button>
+                </div>
+                <div id="billing-result" class="billing-result">
+                    <!-- Results appear here -->
+                </div>
+            </div>
+            
+            <!-- Healthcare Integration Notice -->
+            <div class="healthcare-ready">
+                <strong>Healthcare Ready:</strong> HIPAA compliant | Epic/Cerner/Athena integrated | SOC 2 certified | Documentation flows directly to EHR
+            </div>
+        </div>
+    </div>
+
+    <!-- NEW SLIDE 6: SELF-SUSTAINING IMPACT -->
+    <div class="slide">
+        <div class="slide-number">6</div>
+        <div class="property-badge">Property of KTI</div>
+        <h2>Self-Sustaining Impact Model</h2>
+        <div class="tagline">"$75K Investment → Permanent Infrastructure"</div>
+        
+        <div class="content-box">
+            <div class="sustainability-flow">
+                <div class="sustainability-step">
+                    <div class="sustainability-icon">🔍</div>
+                    <h4>Problem Detected</h4>
+                    <p>Benefits lapsed<br>Rent unpaid</p>
+                </div>
+                <div class="sustainability-step">
+                    <div class="sustainability-icon">💊</div>
+                    <h4>Service Provided</h4>
+                    <p>Case management<br>Benefits restored</p>
+                </div>
+                <div class="sustainability-step">
+                    <div class="sustainability-icon">📋</div>
+                    <h4>Medicaid Billed</h4>
+                    <p>T1017, G0176<br>90887 codes</p>
+                </div>
+                <div class="sustainability-step">
+                    <div class="sustainability-icon">♻️</div>
+                    <h4>Revenue Sustains</h4>
+                    <p>Program continues<br>No grants needed</p>
+                </div>
+            </div>
+            
+            <div style="background: linear-gradient(135deg, #e8f5e9 0%, #ffffff 100%); padding: 30px; border-radius: 15px; margin-top: 30px;">
+                <h3 style="text-align: center; color: #2e7d32;">The Math That Creates Permanence:</h3>
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 20px; text-align: center;">
+                    <div>
+                        <h4 style="color: #c41230;">3 Sites</h4>
+                        <p style="font-size: 1.1em;">90 residents<br>100% coverage</p>
+                    </div>
+                    <div>
+                        <h4 style="color: #d4af37;">$700/month</h4>
+                        <p style="font-size: 1.1em;">Per resident<br>Billable services</p>
+                    </div>
+                    <div>
+                        <h4 style="color: #2e7d32;">$63,000/month</h4>
+                        <p style="font-size: 1.1em;">Total revenue<br>After 90 days</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="quote-box" style="font-style: normal; margin-top: 30px;">
+                <p style="font-size: 1.3em; text-align: center;">
+                    <strong style="color: #d4af37;">Your $75K funds 90 days.<br>
+                    Medicaid funds forever.</strong>
+                </p>
+            </div>
+            
+            <div style="text-align: center; margin-top: 30px;">
+                <p style="font-size: 1.2em; color: #666;">
+                    <strong>After 90 days: System runs entirely on Medicaid revenue</strong><br>
+                    No additional grants, no ongoing funding needed
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIDE 7: CURRENT IMPACT -->
+    <div class="slide">
+        <div class="slide-number">7</div>
+        <div class="property-badge">Property of KTI</div>
+        <h2>Current Impact Across 3,200 Households</h2>
+        <div class="tagline">"27 Evictions Prevented This Month Alone"</div>
+        
+        <div class="content-box">
+            <img src="https://mcusercontent.com/a85d6cade6584c6b501b45583/images/5bed2f48-251d-d949-6ab9-6cdb17414d92.png" alt="Dashboard" class="dashboard-img">
+            
+            <div class="intervention-box">
+                <h4 style="color: #2e7d32;">How We Prevented 27 Evictions:</h4>
+                <ul style="font-size: 1.1em; line-height: 1.8;">
+                    <li><strong>TRUA assistance applications</strong> filed before deadline</li>
+                    <li><strong>Benefits restoration</strong> for lapsed coverage</li>
+                    <li><strong>Mental health services</strong> connected</li>
+                </ul>
+                <p style="text-align: center; font-size: 1.2em; margin-top: 15px;">
+                    <strong>Total value: ~$81,000 in placement costs avoided</strong>
+                </p>
+            </div>
+            
+            <img src="https://mcusercontent.com/a85d6cade6584c6b501b45583/images/5e0e726e-014e-8984-b444-a681a50d6107.png" alt="Housing Retention" class="dashboard-img" style="margin-top: 30px;">
+            
+            <img src="https://mcusercontent.com/a85d6cade6584c6b501b45583/images/4fed5dc9-35c6-6ed0-3ab8-1154544c18a4.png" alt="Quality Metrics" class="dashboard-img" style="margin-top: 30px;">
+        </div>
+    </div>
+
+    <!-- SLIDE 8: SIMPLIFIED ROLLOUT -->
+    <div class="slide">
+        <div class="slide-number">8</div>
+        <div class="property-badge">Property of KTI</div>
+        <h2>Your $75K Creates Permanent Change</h2>
+        <div class="tagline">"90 Days to Transform PSH Forever"</div>
+        
+        <div class="content-box">
+            <div class="impact-timeline">
+                <h3 style="text-align: center; color: #c41230; margin-bottom: 30px;">What Happens With Your Investment:</h3>
+                
+                <div class="timeline-phase">
+                    <div>
+                        <h4 style="color: #c41230;">Month 1</h4>
+                        <p style="font-size: 1.1em;">Deploy 3 flagship sites<br>100 residents covered<br>First billing in 7 days</p>
+                    </div>
+                    <div style="text-align: center;">
+                        <span style="font-size: 2em; color: #d4af37;">→</span>
+                    </div>
+                    <div>
+                        <h4 style="color: #d4af37;">Month 2-3</h4>
+                        <p style="font-size: 1.1em;">Document every service<br>Process Medicaid claims<br>Refine workflows</p>
+                    </div>
+                    <div style="text-align: center;">
+                        <span style="font-size: 2em; color: #d4af37;">→</span>
+                    </div>
+                    <div>
+                        <h4 style="color: #2e7d32;">Month 4+</h4>
+                        <p style="font-size: 1.1em;">System self-sustains<br>No additional funding needed<br>Ready to scale statewide</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="chart-container">
+                <canvas id="sustainabilityChart"></canvas>
+            </div>
+            
+            <div style="background: #e8f5e9; padding: 30px; border-radius: 15px; margin-top: 30px;">
+                <h3 style="text-align: center; color: #2e7d32;">CMS-Ready Documentation Package:</h3>
+                <ul style="font-size: 1.2em; line-height: 2;">
+                    <li>✓ Every preventable crisis documented</li>
+                    <li>✓ Every service coded and billed</li>
+                    <li>✓ Every dollar of Medicaid savings tracked</li>
+                    <li>✓ Complete model for national replication</li>
+                </ul>
+                <p style="text-align: center; font-size: 1.3em; margin-top: 20px; font-weight: bold;">
+                    Your $75K proves SWSHE works. CMS approves. PSH transforms nationwide.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIDE 9: IMPLEMENTATION EXCELLENCE -->
+    <div class="slide">
+        <div class="slide-number">9</div>
+        <div class="property-badge">Property of KTI</div>
+        <h2>Built for Healthcare Integration</h2>
+        <div class="tagline">"Enterprise-Ready, Provider-Friendly"</div>
+        
+        <div class="content-box">
+            <div class="integration-grid">
+                <div class="integration-box">
+                    <h4>Clinical Integration</h4>
+                    <ul>
+                        <li><strong>EHR Ready:</strong> HL7 FHIR compliant, Epic/Cerner integration</li>
+                        <li><strong>Care Team Portal:</strong> Real-time alerts to providers</li>
+                        <li><strong>Documentation:</strong> Auto-generates encounter notes</li>
+                        <li><strong>Workflow:</strong> Seamless integration, no duplicate entry</li>
+                    </ul>
+                </div>
+                
+                <div class="integration-box">
+                    <h4>Quality & Compliance</h4>
+                    <ul>
+                        <li><strong>HEDIS Metrics:</strong> Maps to 12 key measures</li>
+                        <li><strong>HIPAA Compliant:</strong> SOC 2 Type II certified</li>
+                        <li><strong>CMS Reporting:</strong> Automated quality dashboards</li>
+                        <li><strong>Audit Ready:</strong> Complete documentation trail</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div style="margin-top: 30px;">
+                <h3 style="text-align: center;">Risk Mitigation Built In</h3>
+                <table class="risk-table">
+                    <tr>
+                        <th>Challenge</th>
+                        <th>Our Solution</th>
+                        <th>Result</th>
+                    </tr>
+                    <tr>
+                        <td>Provider resistance</td>
+                        <td>2-hour training, ongoing support</td>
+                        <td>3x efficiency gains proven</td>
+                    </tr>
+                    <tr>
+                        <td>Documentation burden</td>
+                        <td>AI-assisted notes, voice-to-text, pre-filled templates</td>
+                        <td>50% time savings</td>
+                    </tr>
+                    <tr>
+                        <td>Billing denials</td>
+                        <td>Real-time eligibility checks, audit trail</td>
+                        <td>94% first-pass rate</td>
+                    </tr>
+                    <tr>
+                        <td>Data security</td>
+                        <td>End-to-end encryption, role-based access</td>
+                        <td>Zero breaches to date</td>
+                    </tr>
+                </table>
+            </div>
+            
+            <div class="stats-grid" style="margin-top: 30px;">
+                <div class="stat-card">
+                    <span class="stat-number">2hrs</span>
+                    <span class="stat-label">Training Time</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">94%</span>
+                    <span class="stat-label">First-Pass Billing</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">3x</span>
+                    <span class="stat-label">Provider Efficiency</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">100%</span>
+                    <span class="stat-label">HIPAA Compliant</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIDE 10: PROJECTIONS -->
+    <div class="slide">
+        <div class="slide-number">10</div>
+        <div class="property-badge">Property of KTI</div>
+        <h2>Projected Impact & Scale</h2>
+        <div class="tagline">"From 3 Sites to Statewide Transformation"</div>
+        
+        <div class="content-box">
+            <div class="chart-container">
+                <canvas id="projectionChart"></canvas>
+            </div>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <span class="stat-number">$2.8M</span>
+                    <span class="stat-label">Annual Medicaid Savings</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">200+</span>
+                    <span class="stat-label">Evictions Prevented</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">300+</span>
+                    <span class="stat-label">ER Visits Avoided</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">12</span>
+                    <span class="stat-label">HEDIS Measures Improved</span>
+                </div>
+            </div>
+            
+            <div style="background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%); color: white; padding: 30px; border-radius: 15px; margin-top: 30px; text-align: center;">
+                <p style="font-size: 1.3em;">
+                    <strong style="color: #d4af37;">With Your $75K Investment:</strong><br><br>
+                    <strong>Month 1-3:</strong> Pilot proves model with 100 residents<br>
+                    <strong>Month 4+:</strong> System self-sustains through Medicaid<br>
+                    <strong>Year 1:</strong> Ready for full SWSHE deployment (869 residents)<br>
+                    <strong>Long-term:</strong> National model for PSH sustainability
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIDE 11: THE ASK -->
+    <div class="slide">
+        <div class="slide-number">11</div>
+        <div class="property-badge">Property of KTI</div>
+        <h1>Your $75K Changes Everything</h1>
+        
+        <div class="content-box" style="text-align: center;">
+            <div class="swshe-highlight">
+                <h2 style="color: white;">Colorado's Proof = National Transformation</h2>
+                <p>Your investment proves PSH can sustain itself through Medicaid billing</p>
+            </div>
+            
+            <div class="quote-box" style="font-style: normal;">
+                <p style="font-size: 1.3em;">
+                    Providers do heroic work every day that Medicaid never sees.<br>
+                    We document it, code it, bill it.<br>
+                    That's how we sustain PSH forever.
+                </p>
+            </div>
+            
+            <div style="background: #fff3cd; padding: 30px; border-radius: 15px; margin: 30px 0;">
+                <h3 style="color: #f57c00;">$75K = Proof of Concept That Unlocks $530M</h3>
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 20px;">
+                    <div>
+                        <h4 style="color: #c41230;">Immediate</h4>
+                        <p>3 sites operational<br>100 residents covered<br>Billing starts Day 7</p>
+                    </div>
+                    <div>
+                        <h4 style="color: #d4af37;">90 Days</h4>
+                        <p>Self-sustaining model<br>CMS documentation<br>Proven ROI</p>
+                    </div>
+                    <div>
+                        <h4 style="color: #2e7d32;">Forever</h4>
+                        <p>No more grants needed<br>PSH funded by Medicaid<br>Model replicates nationwide</p>
+                    </div>
+                </div>
+            </div>
+            
+            <button class="cta-button">Let's Transform PSH Together</button>
+            
+            <div style="margin-top: 40px;">
+                <img src="https://mcusercontent.com/a85d6cade6584c6b501b45583/images/e5a4753c-cb1c-583c-9bf0-af1785263808.png" alt="KTI Logo" width="120">
+                <p style="font-size: 1.2em; color: #666; margin-top: 20px;">
+                    <strong>Brittany Katalenas</strong><br>
+                    CEO & Founder, KTI<br>
+                    <a href="https://konnectedtech.com" style="color: #c41230;">konnectedtech.com</a><br>
+                    <em>Turning invisible work into permanent infrastructure</em>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Interactive Billing Demo
+        function showBilling(domain) {
+            const services = {
+                housing: {
+                    codes: [
+                        { code: 'T1017', name: 'Housing Stabilization', value: 120 },
+                        { code: '90887', name: 'Case Management', value: 125 }
+                    ],
+                    intervention: 'TRUA assistance + Payment plan'
+                },
+                benefits: {
+                    codes: [
+                        { code: 'G0176', name: 'Benefits Counseling', value: 75 },
+                        { code: '98960', name: 'Financial Literacy', value: 90 }
+                    ],
+                    intervention: 'Benefits restoration + Recertification'
+                },
+                food: {
+                    codes: [
+                        { code: '97802', name: 'Nutrition Counseling', value: 85 },
+                        { code: 'Z59.4', name: 'Food Insecurity', value: 75 }
+                    ],
+                    intervention: 'SNAP application + Food bank referral'
+                }
+            };
+            
+            const service = services[domain];
+            const resultDiv = document.getElementById('billing-result');
+            const serviceTotal = service.codes.reduce((sum, code) => sum + code.value, 0);
+            
+            let html = `
+                <div style="border-left: 4px solid #2e7d32; padding-left: 15px;">
+                    <h3 style="color: #2e7d32; margin-bottom: 15px;">✓ Billable Services Triggered</h3>
+            `;
+            
+            service.codes.forEach(code => {
+                html += `
+                    <div style="display: flex; justify-content: space-between; margin: 10px 0; padding: 10px; background: white; border-radius: 5px;">
+                        <span><strong>${code.code}</strong> - ${code.name}</span>
+                        <span style="color: #2e7d32; font-weight: bold;">$${code.value}</span>
+                    </div>
+                `;
+            });
+            
+            html += `
+                <div style="margin-top: 15px; padding-top: 15px; border-top: 2px solid #e0e0e0;">
+                    <strong>Intervention:</strong> ${service.intervention}
+                </div>
+                <div style="margin-top: 10px;">
+                    <strong style="font-size: 1.2em; color: #2e7d32;">Monthly Value: $${serviceTotal}</strong>
+                </div>
+            </div>`;
+            
+            resultDiv.innerHTML = html;
+            resultDiv.style.display = 'block';
+        }
+        
+        // Chart 1: Preventable Issues
+        const preventableCtx = document.getElementById('preventableChart');
+        if (preventableCtx) {
+            new Chart(preventableCtx.getContext('2d'), {
+                type: 'bar',
+                data: {
+                    labels: ['Housing/Maint', 'Safety', 'Transport', 'Isolation', 'Food'],
+                    datasets: [{
+                        label: '% of PSH Residents Affected',
+                        data: [37.5, 28.6, 25.9, 20.5, 15.2],
+                        backgroundColor: ['#c41230', '#d4af37', '#ff6b35', '#1a1a1a', '#666666']
+                    }]
+                },
+                options: {
+                    indexAxis: 'y',
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: '112 PSH Residents: ALL Issues Preventable & Billable',
+                            font: { size: 14 }
+                        },
+                        legend: { display: false }
+                    }
+                }
+            });
+        }
+
+        // Chart 2: ROI
+        const roiCtx = document.getElementById('roiChart');
+        if (roiCtx) {
+            new Chart(roiCtx.getContext('2d'), {
+                type: 'bar',
+                data: {
+                    labels: ['Investment', 'Services Billed', 'Medicaid Saved', 'Total Return'],
+                    datasets: [{
+                        data: [39000, 45000, 127200, 172200],
+                        backgroundColor: ['#c41230', '#d4af37', '#2e7d32', '#1a1a1a']
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: 'Geneva Village: $3.27 Saved Per $1 Invested',
+                            font: { size: 16, weight: 'bold' }
+                        },
+                        legend: { display: false }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                callback: function(value) {
+                                    return '$' + (value/1000) + 'K';
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        // Chart 3: Sustainability Timeline
+        const sustainCtx = document.getElementById('sustainabilityChart');
+        if (sustainCtx) {
+            new Chart(sustainCtx.getContext('2d'), {
+                type: 'line',
+                data: {
+                    labels: ['Month 1', 'Month 2', 'Month 3', 'Month 4', 'Month 5', 'Month 6'],
+                    datasets: [{
+                        label: 'Revenue from Medicaid Billing',
+                        data: [0, 15000, 35000, 63000, 63000, 63000],
+                        borderColor: '#2e7d32',
+                        backgroundColor: 'rgba(46, 125, 50, 0.1)',
+                        fill: true
+                    }, {
+                        label: 'Operating Costs',
+                        data: [25000, 25000, 25000, 25000, 25000, 25000],
+                        borderColor: '#c41230',
+                        borderDash: [5, 5],
+                        fill: false
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: 'Path to Self-Sustainability',
+                            font: { size: 14 }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                callback: function(value) {
+                                    return '$' + (value/1000) + 'K';
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        // Chart 4: Projections
+        const projCtx = document.getElementById('projectionChart');
+        if (projCtx) {
+            new Chart(projCtx.getContext('2d'), {
+                type: 'bar',
+                data: {
+                    labels: ['Pilot (3 sites)', 'Scale Ready (10 sites)', 'Full SWSHE (28 sites)'],
+                    datasets: [{
+                        label: 'Monthly Billable Revenue',
+                        data: [63, 210, 600],
+                        backgroundColor: '#d4af37'
+                    }, {
+                        label: 'Quarterly Medicaid Savings',
+                        data: [135, 450, 700],
+                        backgroundColor: '#2e7d32'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: 'Scaling Impact After Initial Investment',
+                            font: { size: 14 }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                callback: function(value) {
+                                    return '$' + value + 'K';
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+    </script>
+</body>
+</html>
