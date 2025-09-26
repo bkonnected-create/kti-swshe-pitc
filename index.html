@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KTI Prime Health SWSHE Pitch</title>
+    <title>KTI Prime Health SWSHE Pitch - Final</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
     <style>
         * {
@@ -394,29 +394,6 @@
             font-weight: bold;
         }
         
-        .risk-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 30px 0;
-        }
-        
-        .risk-table th,
-        .risk-table td {
-            padding: 15px;
-            text-align: left;
-            border-bottom: 1px solid #ddd;
-        }
-        
-        .risk-table th {
-            background: #f5f5f5;
-            color: #c41230;
-            font-weight: bold;
-        }
-        
-        .risk-table tr:hover {
-            background: #f9f9f9;
-        }
-        
         .healthcare-ready {
             background: #e3f2fd;
             padding: 15px;
@@ -424,6 +401,39 @@
             margin-top: 20px;
             text-align: center;
             font-size: 1.1em;
+        }
+        
+        .problem-solution-box {
+            background: #ffebee;
+            padding: 30px;
+            border-radius: 15px;
+            margin: 30px 0;
+        }
+        
+        .barrier-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        
+        .barrier-table th {
+            background: #f5f5f5;
+            color: #c41230;
+            padding: 15px;
+            text-align: left;
+            font-weight: bold;
+        }
+        
+        .barrier-table td {
+            padding: 15px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .health-equity-box {
+            background: #fff3cd;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 20px;
         }
     </style>
 </head>
@@ -448,10 +458,15 @@
                 You track violations but not root causes. Track when hours get cut, bills pile up. That's where eviction starts.
             </div>
             
+            <div style="background: #e8f5e9; padding: 20px; border-radius: 15px; margin: 20px 0; text-align: center;">
+                <h4 style="color: #2e7d32;">Amplifying Resident Voices Across 16 States</h4>
+                <p>3,200 households | 112 PSH residents monitored daily | Real-time crisis prevention</p>
+            </div>
+            
             <div class="stats-grid">
                 <div class="stat-card">
                     <span class="stat-number">140+</span>
-                    <span class="stat-label">Health & Housing Indicators</span>
+                    <span class="stat-label">SDOH Indicators</span>
                 </div>
                 <div class="stat-card">
                     <span class="stat-number">88%</span>
@@ -473,7 +488,7 @@
         </div>
     </div>
 
-    <!-- SLIDE 2: WHY NOW? -->
+    <!-- SLIDE 2: WHY NOW? WITH CLEAR PROBLEM/SOLUTION -->
     <div class="slide">
         <div class="slide-number">2</div>
         <div class="property-badge">Property of KTI</div>
@@ -490,39 +505,33 @@
                 </ul>
             </div>
 
-            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin: 30px 0;">
-                <div style="background: #ffebee; padding: 20px; border-radius: 15px; text-align: center;">
-                    <h4 style="color: #c41230;">1. CMS Seeking Models</h4>
-                    <p>Actively funding prevention-based care models that reduce costs</p>
-                </div>
-                <div style="background: #e3f2fd; padding: 20px; border-radius: 15px; text-align: center;">
-                    <h4 style="color: #1976d2;">2. SWSHE's $530M Test</h4>
-                    <p>Colorado's pilot could unlock nationwide Medicaid funding for PSH</p>
-                </div>
-                <div style="background: #e8f5e9; padding: 20px; border-radius: 15px; text-align: center;">
-                    <h4 style="color: #2e7d32;">3. Proven Technology</h4>
-                    <p>KTI already demonstrating 172% ROI across 3,200 households</p>
-                </div>
+            <div class="problem-solution-box">
+                <h3 style="color: #c41230;">THE PROBLEM:</h3>
+                <p style="font-size: 1.3em;">Case managers prevent 27 crises monthly worth $81,000 in Medicaid savings, but can't bill for any of it. Programs die when grants end.</p>
+                
+                <h3 style="color: #2e7d32; margin-top: 20px;">THE SOLUTION:</h3>
+                <p style="font-size: 1.3em;">KTI makes prevention work billable through existing Medicaid codes. Programs become self-sustaining after 90 days.</p>
             </div>
 
             <div class="quote-box" style="font-style: normal;">
                 <p style="font-size: 1.3em; text-align: center;">
-                    <strong style="color: #d4af37;">If SWSHE fails:</strong> Colorado loses $530M in federal funding<br>
-                    869 people lose housing support<br>
-                    PSH model dies nationwide<br><br>
-                    <strong style="color: #d4af37;">If SWSHE succeeds:</strong> Colorado becomes the national model<br>
-                    Medicaid funds PSH everywhere
+                    <strong style="color: #d4af37;">If SWSHE succeeds:</strong><br>
+                    Colorado's 869 SWSHE sites receive $530M in Medicaid funding<br>
+                    for supportive housing services<br><br>
+                    <strong style="color: #d4af37;">If SWSHE fails:</strong><br>
+                    No Medicaid funding for supportive housing<br>
+                    869 people lose support, model dies nationwide
                 </p>
             </div>
         </div>
     </div>
 
-    <!-- SLIDE 3: RESIDENT VOICES REVEAL BILLABLE GAPS -->
+    <!-- SLIDE 3: RESIDENT VOICES WITH HEALTH EQUITY -->
     <div class="slide">
         <div class="slide-number">3</div>
         <div class="property-badge">Property of KTI</div>
-        <h2>112 PSH Residents Show Us What's Billable</h2>
-        <div class="tagline">"Every Problem = Preventable Crisis = Medicaid Revenue"</div>
+        <h2>112 PSH Patients Show Us What's Billable</h2>
+        <div class="tagline">"Every SDOH Problem = Preventable Crisis = Medicaid Revenue"</div>
         
         <div class="content-box">
             <div class="quote-box" style="font-size: 1.1em;">
@@ -530,7 +539,7 @@
                 Can't afford groceries. Nobody helps with paperwork."
             </div>
             
-            <h3 style="text-align: center;">This ONE Resident = 7 Billable Services:</h3>
+            <h3 style="text-align: center;">This ONE Patient = 7 Billable Services:</h3>
             <div style="background: #e8f5e9; padding: 20px; border-radius: 15px;">
                 <ul style="columns: 2; font-size: 1.1em;">
                     <li>Benefits counseling (G0176) - $75</li>
@@ -546,13 +555,18 @@
                 </p>
             </div>
             
+            <div class="health-equity-box">
+                <strong>Health Equity Impact:</strong> 68% of our PSH patients are BIPOC. 
+                42% have disabilities. We're closing the prevention gap for populations Medicaid historically overlooks.
+            </div>
+            
             <div class="chart-container">
                 <canvas id="preventableChart"></canvas>
             </div>
         </div>
     </div>
 
-    <!-- SLIDE 4: GENEVA VILLAGE PROOF -->
+    <!-- SLIDE 4: GENEVA VILLAGE PROOF WITH CLINICAL OUTCOMES -->
     <div class="slide">
         <div class="slide-number">4</div>
         <div class="property-badge">Property of KTI</div>
@@ -561,7 +575,7 @@
         
         <div class="content-box">
             <div class="quote-box">
-                Mary, 77: "Nobody knew my benefits lapsed." Our text evaluation detected it. Case manager restored benefits.
+                Mary, 77: "Nobody knew my benefits lapsed." Our continuous monitoring detected it. Case manager restored benefits.
                 <br><br>
                 <strong style="color: #d4af37;">Cost: $300. Savings: $10,000 emergency placement.</strong>
             </div>
@@ -573,20 +587,24 @@
             <div class="stats-grid">
                 <div class="stat-card">
                     <span class="stat-number">35%</span>
-                    <span class="stat-label">Fewer ER Visits</span>
+                    <span class="stat-label">Reduction in ER Visits</span>
                 </div>
                 <div class="stat-card">
-                    <span class="stat-number">$127K</span>
-                    <span class="stat-label">Annual Medicaid Savings</span>
+                    <span class="stat-number">28%</span>
+                    <span class="stat-label">Fewer Hospitalizations</span>
                 </div>
                 <div class="stat-card">
-                    <span class="stat-number">172%</span>
-                    <span class="stat-label">ROI Documented</span>
+                    <span class="stat-number">41%</span>
+                    <span class="stat-label">Better Med Adherence</span>
                 </div>
                 <div class="stat-card">
                     <span class="stat-number">100%</span>
-                    <span class="stat-label">Housing Stability</span>
+                    <span class="stat-label">Housing = Healthcare</span>
                 </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 20px; font-size: 1.2em; color: #2e7d32;">
+                <strong>Clinical + Social + Behavioral = Total Patient Care</strong>
             </div>
         </div>
     </div>
@@ -595,15 +613,15 @@
     <div class="slide">
         <div class="slide-number">5</div>
         <div class="property-badge">Property of KTI</div>
-        <h2>Self-Sustaining Prevention System</h2>
-        <div class="tagline">"Your $75K Creates Permanent Infrastructure"</div>
+        <h2>Self-Sustaining SDOH Intervention System</h2>
+        <div class="tagline">"We Don't Create New Work - We Make Current Work Billable"</div>
         
         <div class="content-box">
             <!-- Simple Process Flow -->
             <div class="process-flow">
                 <div class="process-step">
                     <h4>DETECT</h4>
-                    <p>140+ Indicators</p>
+                    <p>140+ SDOH Indicators</p>
                 </div>
                 <div class="process-step">
                     <h4>PREVENT</h4>
@@ -649,7 +667,7 @@
             <div style="background: linear-gradient(135deg, #e8f5e9 0%, #ffffff 100%); padding: 25px; border-radius: 15px; margin-top: 25px;">
                 <h3 style="text-align: center; color: #2e7d32;">Your $75K Investment Math:</h3>
                 <p style="text-align: center; font-size: 1.3em; margin-top: 15px;">
-                    <strong>3 sites × 30 residents × $700/month = $63,000/month</strong><br>
+                    <strong>3 sites × 30 patients × $700/month = $63,000/month</strong><br>
                     <span style="color: #666; font-size: 0.9em;">Month 1-3: Your investment funds operations<br>
                     Month 4+: Medicaid revenue sustains everything</span>
                 </p>
@@ -661,8 +679,8 @@
     <div class="slide">
         <div class="slide-number">6</div>
         <div class="property-badge">Property of KTI</div>
-        <h2>Live Impact: 27 Evictions Prevented This Month</h2>
-        <div class="tagline">"Real People, Real Time, Real Prevention"</div>
+        <h2>Population Health Management in Action</h2>
+        <div class="tagline">"27 Evictions Prevented = 27 Patients Stabilized"</div>
         
         <div class="content-box">
             <div class="stats-grid">
@@ -672,11 +690,11 @@
                 </div>
                 <div class="stat-card">
                     <span class="stat-number">3,200</span>
-                    <span class="stat-label">Households Protected</span>
+                    <span class="stat-label">Patients Protected</span>
                 </div>
                 <div class="stat-card">
                     <span class="stat-number">$81K</span>
-                    <span class="stat-label">Crisis Costs Avoided</span>
+                    <span class="stat-label">Healthcare Costs Avoided</span>
                 </div>
             </div>
             
@@ -684,12 +702,12 @@
             
             <div style="text-align: center; margin-top: 30px; font-size: 1.3em;">
                 <p style="color: #2e7d32;"><strong>This morning during prep: 3 more evictions prevented</strong></p>
-                <p style="color: #666; margin-top: 10px;">Every resident tracked. Every crisis prevented. Every service documented.</p>
+                <p style="color: #666; margin-top: 10px;">Every patient tracked. Every crisis prevented. Every service documented.</p>
             </div>
         </div>
     </div>
 
-    <!-- SLIDE 8: YOUR INVESTMENT TIMELINE -->
+    <!-- SLIDE 8: YOUR INVESTMENT TIMELINE WITH SCALING CLARITY -->
     <div class="slide">
         <div class="slide-number">7</div>
         <div class="property-badge">Property of KTI</div>
@@ -703,7 +721,7 @@
                 <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-top: 30px;">
                     <div style="text-align: center;">
                         <h4 style="color: #c41230;">Month 1</h4>
-                        <p style="font-size: 1.1em;">3 sites operational<br>100 residents covered<br>Billing starts Day 7</p>
+                        <p style="font-size: 1.1em;">3 sites operational<br>100 patients covered<br>Billing starts Day 7</p>
                     </div>
                     <div style="text-align: center;">
                         <h4 style="color: #d4af37;">Month 2-3</h4>
@@ -716,23 +734,33 @@
                 </div>
             </div>
             
-            <div style="background: #e8f5e9; padding: 25px; border-radius: 15px; margin-top: 30px;">
-                <h3 style="text-align: center; color: #2e7d32;">What You Get:</h3>
+            <div style="background: #e3f2fd; padding: 25px; border-radius: 15px; margin-top: 20px;">
+                <h3 style="text-align: center;">Scaling After Pilot Success:</h3>
+                <p style="font-size: 1.2em; text-align: center;">
+                    <strong>Each new site needs ~$25K for 90-day ramp</strong><br>
+                    Site pays back investment through Medicaid billing<br>
+                    Or sites can self-fund using operating reserves<br>
+                    <span style="color: #666;">No ongoing costs - Medicaid sustains forever</span>
+                </p>
+            </div>
+            
+            <div style="background: #e8f5e9; padding: 25px; border-radius: 15px; margin-top: 20px;">
+                <h3 style="text-align: center; color: #2e7d32;">CMS-Ready Documentation:</h3>
                 <ul style="font-size: 1.2em; line-height: 2;">
-                    <li>✓ CMS-ready documentation package</li>
-                    <li>✓ Every crisis prevented, coded, and billed</li>
-                    <li>✓ Complete model for national replication</li>
-                    <li>✓ Proof that prevention pays for itself</li>
+                    <li>✓ Proof that prevention work is billable</li>
+                    <li>✓ Complete ROI documentation for SWSHE</li>
+                    <li>✓ Model ready for 869 Colorado sites</li>
+                    <li>✓ Template for national Medicaid policy</li>
                 </ul>
             </div>
         </div>
     </div>
 
-    <!-- SLIDE 9: BUILT FOR HEALTHCARE -->
+    <!-- SLIDE 9: BUILT FOR HEALTHCARE WITH BARRIERS ADDRESSED -->
     <div class="slide">
         <div class="slide-number">8</div>
         <div class="property-badge">Property of KTI</div>
-        <h2>Built for Healthcare Integration</h2>
+        <h2>Built for Value-Based Care</h2>
         <div class="tagline">"Enterprise-Ready, Provider-Friendly"</div>
         
         <div class="content-box">
@@ -748,14 +776,36 @@
                 </div>
                 
                 <div class="integration-box">
-                    <h4>Quality & Compliance</h4>
+                    <h4>Population Health Impact</h4>
                     <ul>
                         <li><strong>HEDIS:</strong> 12 measures improved</li>
-                        <li><strong>HIPAA:</strong> SOC 2 certified</li>
-                        <li><strong>Billing:</strong> 94% first-pass rate</li>
-                        <li><strong>Security:</strong> Zero breaches</li>
+                        <li><strong>Total Cost of Care:</strong> Reduced</li>
+                        <li><strong>Risk Stratification:</strong> Enabled</li>
+                        <li><strong>SDOH:</strong> Fully documented</li>
                     </ul>
                 </div>
+            </div>
+            
+            <div style="margin-top: 30px;">
+                <h3 style="text-align: center;">Implementation Barriers Solved:</h3>
+                <table class="barrier-table">
+                    <tr>
+                        <th>Barrier</th>
+                        <th>Our Solution</th>
+                    </tr>
+                    <tr>
+                        <td>Provider burnout</td>
+                        <td>3x faster documentation</td>
+                    </tr>
+                    <tr>
+                        <td>Billing complexity</td>
+                        <td>Auto-coding with 94% accuracy</td>
+                    </tr>
+                    <tr>
+                        <td>Change resistance</td>
+                        <td>2-hour training, no workflow disruption</td>
+                    </tr>
+                </table>
             </div>
             
             <div class="stats-grid" style="margin-top: 30px;">
@@ -779,7 +829,7 @@
         </div>
     </div>
 
-    <!-- SLIDE 10: THE ASK -->
+    <!-- SLIDE 10: THE ASK WITH VALUE-BASED CARE -->
     <div class="slide">
         <div class="slide-number">9</div>
         <div class="property-badge">Property of KTI</div>
@@ -787,24 +837,32 @@
         
         <div class="content-box" style="text-align: center;">
             <div class="swshe-highlight">
-                <h2 style="color: white;">Colorado's Proof = National Transformation</h2>
-                <p>Your investment proves PSH can sustain itself through Medicaid billing</p>
+                <h2 style="color: white;">Success Unlocks $530M in Medicaid Funding</h2>
+                <p>Your investment proves Colorado's 869 SWSHE sites can bill Medicaid for supportive housing services</p>
             </div>
             
             <div class="quote-box" style="font-style: normal;">
                 <p style="font-size: 1.3em;">
-                    Providers do heroic work every day that Medicaid never sees.<br>
-                    We document it, code it, bill it.<br>
-                    That's how we sustain PSH forever.
+                    We don't create new work.<br>
+                    We make the heroic work your teams already do<br>
+                    finally count—and finally pay.
                 </p>
             </div>
             
+            <div style="background: #e3f2fd; padding: 20px; border-radius: 15px; margin: 20px 0;">
+                <strong>Perfect for Value-Based Contracts:</strong><br>
+                ✓ Reduces total cost of care<br>
+                ✓ Improves HEDIS scores<br>
+                ✓ Documents SDOH interventions<br>
+                ✓ Enables population health management
+            </div>
+            
             <div style="background: #fff3cd; padding: 30px; border-radius: 15px; margin: 30px 0;">
-                <h3 style="color: #f57c00;">$75K = Proof That Unlocks $530M</h3>
+                <h3 style="color: #f57c00;">$75K = Proof That Unlocks Everything</h3>
                 <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 20px;">
                     <div>
                         <h4 style="color: #c41230;">Immediate</h4>
-                        <p>3 sites operational<br>100 residents protected<br>Billing starts Day 7</p>
+                        <p>3 sites operational<br>100 patients protected<br>Billing starts Day 7</p>
                     </div>
                     <div>
                         <h4 style="color: #d4af37;">90 Days</h4>
@@ -812,7 +870,7 @@
                     </div>
                     <div>
                         <h4 style="color: #2e7d32;">Forever</h4>
-                        <p>No more grants<br>Medicaid funded<br>National model</p>
+                        <p>SWSHE sites funded<br>$530M unlocked<br>National model</p>
                     </div>
                 </div>
             </div>
@@ -825,7 +883,7 @@
                     <strong>Brittany Katalenas</strong><br>
                     CEO & Founder, KTI<br>
                     <a href="https://konnectedtech.com" style="color: #c41230;">konnectedtech.com</a><br>
-                    <em>Turning invisible work into permanent infrastructure</em>
+                    <em>Funded by Prime Health Challenge</em>
                 </p>
             </div>
         </div>
@@ -851,7 +909,7 @@
                 },
                 food: {
                     codes: [
-                        { code: '97802', name: 'Nutrition counseling', value: 85 },
+                        { code: '97802', name: 'Nutrition Counseling', value: 85 },
                         { code: 'Z59.4', name: 'Food Insecurity', value: 75 }
                     ],
                     intervention: 'SNAP application + Food bank referral'
@@ -864,7 +922,7 @@
             
             let html = `
                 <div style="border-left: 4px solid #2e7d32; padding-left: 15px;">
-                    <h3 style="color: #2e7d32; margin-bottom: 15px;">✓ Billable Services Triggered</h3>
+                    <h3 style="color: #2e7d32; margin-bottom: 15px;">✓ Billable SDOH Services Triggered</h3>
             `;
             
             service.codes.forEach(code => {
@@ -897,7 +955,7 @@
                 data: {
                     labels: ['Housing/Maint', 'Safety', 'Transport', 'Isolation', 'Food'],
                     datasets: [{
-                        label: '% of PSH Residents Affected',
+                        label: '% of PSH Patients Affected',
                         data: [37.5, 28.6, 25.9, 20.5, 15.2],
                         backgroundColor: ['#c41230', '#d4af37', '#ff6b35', '#1a1a1a', '#666666']
                     }]
@@ -909,7 +967,7 @@
                     plugins: {
                         title: {
                             display: true,
-                            text: '112 PSH Residents: ALL Issues Preventable & Billable',
+                            text: '112 PSH Patients: ALL SDOH Issues Preventable & Billable',
                             font: { size: 14 }
                         },
                         legend: { display: false }
